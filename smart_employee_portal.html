@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="page-title">بوابة الموظف الذكية المتطورة</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    
+    <style>
+        /* CSS Reset & Advanced Design System */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        :root {
+            --font-family: 'Tajawal', sans-serif;
+            --shadow-sm: rgba(0, 0, 0, 0.05);
+            --shadow-md: rgba(0, 0, 0, 0.1);
+            --shadow-lg: rgba(0, 0, 0, 0.15);
+            --border-radius: 20px;
+            --transition-speed-fast: 0.25s;
+            --transition-speed-med: 0.5s;
+            --transition-speed-slow: 0.8s;
+            --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+            --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+            --glow-spread: 8px;
+            --ai-gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --ai-gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --ai-gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        html[data-theme='light'] {
+            --bg-start: #e9eef8; --bg-end: #d8e3f5;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --blur-bg: rgba(255, 255, 255, 0.6);
+            --text-primary: #1e293b; --text-secondary: #475569;
+            --border-color: rgba(203, 213, 225, 0.6);
+            --input-bg: rgba(241, 245, 249, 0.9);
+            --primary-color: #3b82f6; --success-color: #10b981; --error-color: #ef4444;
+            --glow-color: rgba(59, 130, 246, 0.15);
+            --ai-accent: #6366f1;
+        }
+
+        html[data-theme='dark'] {
+            --bg-start: #1f2937; --bg-end: #111827;
+            --card-bg: rgba(31, 41, 55, 0.75);
+            --blur-bg: rgba(31, 41, 55, 0.55);
+            --text-primary: #f8fafc; --text-secondary: #9ca3af;
+            --border-color: rgba(75, 85, 99, 0.6);
+            --input-bg: rgba(55, 65, 81, 0.9);
+            --primary-color: #60a5fa; --success-color: #34d399; --error-color: #f87171;
+            --glow-color: rgba(96, 165, 250, 0.15);
+            --ai-accent: #8b5cf6;
+        }
+        
+        html[data-theme='synthwave'] {
+            --bg-start: #2d1f4a; --bg-end: #1a103c;
+            --card-bg: rgba(45, 31, 74, 0.8);
+            --blur-bg: rgba(45, 31, 74, 0.6);
+            --text-primary: #f2e7fe; --text-secondary: #c4b5fd;
+            --border-color: rgba(126, 34, 206, 0.5);
+            --input-bg: rgba(60, 42, 98, 0.9);
+            --primary-color: #f472b6; --success-color: #4ade80; --error-color: #fb7185;
+            --glow-color: rgba(244, 114, 182, 0.2);
+            --ai-accent: #f472b6;
+        }
+
+        html[data-theme='desert'] {
+            --bg-start: #fdf6e3; --bg-end: #eee8d5;
+            --card-bg: rgba(250, 246, 233, 0.85);
+            --blur-bg: rgba(253, 246, 227, 0.7);
+            --text-primary: #586e75; --text-secondary: #839496;
+            --border-color: rgba(147, 161, 161, 0.5);
+            --input-bg: rgba(238, 232, 213, 0.9);
+            --primary-color: #268bd2; --success-color: #859900; --error-color: #dc322f;
+            --glow-color: rgba(38, 139, 210, 0.15);
+            --ai-accent: #268bd2;
+        }
+
+        /* Advanced Animated Background */
+        body {
+            font-family: var(--font-family);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px;
+            transition: color var(--transition-speed-med) ease;
+            background-size: 400% 400%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, var(--bg-start), var(--bg-end), var(--bg-start));
+            animation: gradient-flow 20s ease infinite, float-particles 15s ease-in-out infinite;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* AI Particles Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, var(--ai-accent), transparent),
+                radial-gradient(2px 2px at 40px 70px, var(--primary-color), transparent),
+                radial-gradient(1px 1px at 90px 40px, var(--success-color), transparent),
+                radial-gradient(1px 1px at 130px 80px, var(--ai-accent), transparent),
+                radial-gradient(2px 2px at 160px 30px, var(--primary-color), transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: sparkle 4s linear infinite;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float-particles {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes sparkle {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-200px); }
+        }
+
+        .app-container {
+            width: 100%; 
+            max-width: 520px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Enhanced Header with AI Features */
+        .app-header {
+            text-align: center; 
+            animation: slide-down 0.7s var(--ease-out-quart);
+            position: relative;
+        }
+
+        .app-header h1 { 
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            background: var(--ai-gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .app-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--ai-gradient-2);
+            border-radius: 2px;
+            animation: pulse-width 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-width {
+            0%, 100% { width: 60px; }
+            50% { width: 100px; }
+        }
+
+        #clock { 
+            font-size: 1rem; 
+            color: var(--text-secondary); 
+            margin-top: 8px; 
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            background: var(--blur-bg);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            display: inline-block;
+        }
+
+        /* AI Status Indicator */
+        .ai-status {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            background: var(--ai-gradient-3);
+            border-radius: 50%;
+            animation: ai-pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 20px var(--ai-accent);
+        }
+
+        @keyframes ai-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+
+        /* Enhanced Preferences */
+        .preferences {
+            display: flex; 
+            gap: 16px; 
+            justify-content: center; 
+            margin-top: 20px;
+            animation: slide-down 0.7s 0.1s var(--ease-out-quart) backwards;
+        }
+
+        #theme-switcher, #lang-switcher {
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+            padding: 8px;
+            background-color: var(--blur-bg); 
+            border: 1px solid var(--border-color);
+            border-radius: 50px; 
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 25px var(--shadow-sm);
+            transition: all var(--transition-speed-fast) ease;
+        }
+
+        .pref-button {
+            background-color: transparent; 
+            border: none; 
+            width: 42px; 
+            height: 42px;
+            border-radius: 50%; 
+            cursor: pointer; 
+            color: var(--text-secondary);
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            display: grid; 
+            place-items: center;
+            transition: all var(--transition-speed-fast) var(--ease-out-quart);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pref-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--ai-gradient-1);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .pref-button:hover::before {
+            left: 0;
+        }
+
+        .pref-button:hover { 
+            color: white; 
+            transform: translateY(-3px) scale(1.05); 
+        }
+
+        .pref-button.active {
+            background: var(--ai-gradient-1); 
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 0 25px -5px var(--ai-accent);
+            animation: pop-in 0.4s var(--ease-out-quart);
+        }
+
+        .pref-button i { 
+            font-size: 1.5rem; 
+            pointer-events: none; 
+        }
+
+        /* Enhanced Main Card */
+        .main-card {
+            background-color: var(--card-bg); 
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius); 
+            box-shadow: 0 20px 60px var(--shadow-md);
+            padding: 36px; 
+            text-align: center;
+            transition: all var(--transition-speed-med) ease; 
+            backdrop-filter: blur(20px);
+            animation: fade-in-up 0.8s 0.2s var(--ease-out-quart) backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .main-card:hover::before {
+            left: 100%;
+        }
+
+        .main-card:focus-within {
+             box-shadow: 0 0 0 var(--glow-spread) var(--glow-color), 0 20px 60px var(--shadow-md);
+        }
+
+        /* AI Enhanced Input Area */
+        .input-group { 
+            position: relative; 
+            margin-bottom: 24px;
+        }
+
+        #identifier-input {
+            font-size: 1.3rem; 
+            font-family: var(--font-family); 
+            width: 100%;
+            padding: 20px; 
+            border: 2px solid transparent; 
+            border-radius: 16px;
+            text-align: center; 
+            direction: ltr;
+            transition: all var(--transition-speed-fast) ease; 
+            background-color: var(--input-bg);
+            color: var(--text-primary); 
+            box-shadow: inset 0 3px 8px var(--shadow-sm);
+            position: relative;
+        }
+
+        #identifier-input:focus {
+            border-color: var(--ai-accent);
+            box-shadow: 
+                inset 0 3px 8px var(--shadow-sm), 
+                0 0 0 6px color-mix(in srgb, var(--ai-accent) 15%, transparent),
+                0 0 30px -10px var(--ai-accent);
+            outline: none;
+            transform: scale(1.02);
+        }
+
+        #clear-input-btn {
+            position: absolute; 
+            top: 50%; 
+            right: 20px; 
+            transform: translateY(-50%);
+            background: transparent; 
+            border: none; 
+            cursor: pointer; 
+            color: var(--text-secondary);
+            font-size: 1.6rem; 
+            opacity: 0; 
+            visibility: hidden;
+            transition: all var(--transition-speed-fast) ease;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+        }
+
+        [dir="rtl"] #clear-input-btn { 
+            right: auto; 
+            left: 20px; 
+        }
+
+        #identifier-input:not(:placeholder-shown) + #clear-input-btn { 
+            opacity: 1; 
+            visibility: visible; 
+        }
+
+        #clear-input-btn:hover { 
+            color: var(--text-primary); 
+            transform: translateY(-50%) scale(1.1);
+            background: var(--blur-bg);
+        }
+
+        /* AI Voice Input Button */
+        .voice-input-btn {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            background: var(--ai-gradient-2);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: grid;
+            place-items: center;
+        }
+
+        [dir="rtl"] .voice-input-btn {
+            left: auto;
+            right: 20px;
+        }
+
+        .voice-input-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 20px var(--ai-accent);
+        }
+
+        .voice-input-btn.listening {
+            animation: voice-pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes voice-pulse {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-header">
+            <h1>بوابة الموظف الذكية المتطورة</h1>
+            <p id="clock"></p>
+            <div class="ai-status"></div>
+        </div>
+
+        <div class="preferences">
+            <button id="theme-switcher" data-theme="light">
+                <i class="ph ph-moon"></i>
+            </button>
+            <button id="lang-switcher" data-lang="ar">
+                <i class="ph ph-globe"></i>
+            </button>
+        </div>
+
+        <div class="main-card">
+            <h2 data-key="greeting">مرحباً بك في بوابة الموظف الذكية!</h2>
+            <p data-key="intro">قم بإدخال معرفك الخاص للوصول إلى جميع المميزات المتاحة.</p>
+            
+            <div class="input-group">
+                <input type="text" id="identifier-input" placeholder="ادخل معرفك" dir="ltr">
+                <button id="clear-input-btn" aria-label="مسح المعرف">
+                    <i class="ph ph-x"></i>
+                </button>
+                <button class="voice-input-btn" aria-label="إدخال بالصوت">
+                    <i class="ph ph-microphone"></i>
+                </button>
+            </div>
+
+            <button class="voice-input-btn listening" aria-label="التسجيل في الصوت">
+                <i class="ph ph-volume-high"></i>
+            </button>
+
+            <div class="ai-features">
+                <h3 data-key="features-title">مميزات الذكاء الاصطناعي</h3>
+                <ul>
+                    <li data-key="feature-1">تحليل دقيق للبيانات وتوصيات مخصصة</li>
+                    <li data-key="feature-2">تنبيهات ذكية للمهام المتبقية</li>
+                    <li data-key="feature-3">تخطيط وتنظيم أفضل للوقت</li>
+                    <li data-key="feature-4">تحسين الأداء والإنتاجية</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeSwitcher = document.getElementById('theme-switcher');
+            const langSwitcher = document.getElementById('lang-switcher');
+            const mainCard = document.querySelector('.main-card');
+            const clock = document.getElementById('clock');
+            const identifierInput = document.getElementById('identifier-input');
+            const clearInputBtn = document.getElementById('clear-input-btn');
+            const voiceInputBtn = document.querySelector('.voice-input-btn');
+            const voiceListeningBtn = document.querySelector('.voice-input-btn.listening');
+
+            // Clock functionality
+            function updateClock() {
+                const now = new Date();
+                const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+                clock.textContent = now.toLocaleTimeString(langSwitcher.dataset.lang, options);
+            }
+            updateClock(); // Initial call
+            setInterval(updateClock, 1000);
+
+            // Theme switcher
+            themeSwitcher.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                this.dataset.theme = newTheme;
+                this.querySelector('i').classList.remove('ph-moon', 'ph-sun');
+                this.querySelector('i').classList.add(newTheme === 'dark' ? 'ph-sun' : 'ph-moon');
+            });
+
+            // Language switcher
+            langSwitcher.addEventListener('click', function() {
+                const currentLang = this.dataset.lang;
+                const newLang = currentLang === 'ar' ? 'en' : 'ar';
+                this.dataset.lang = newLang;
+                this.querySelector('i').classList.remove('ph-globe');
+                this.querySelector('i').classList.add(newLang === 'ar' ? 'ph-globe' : 'ph-flag');
+                // Reload page to apply new language
+                window.location.reload();
+            });
+
+            // Input field interactions
+            identifierInput.addEventListener('input', function() {
+                clearInputBtn.style.opacity = this.value ? '1' : '0';
+                clearInputBtn.style.visibility = this.value ? 'visible' : 'hidden';
+            });
+
+            clearInputBtn.addEventListener('click', function() {
+                identifierInput.value = '';
+                clearInputBtn.style.opacity = '0';
+                clearInputBtn.style.visibility = 'hidden';
+            });
+
+            // Voice input functionality
+            let recognition = null;
+            let isListening = false;
+
+            function startRecognition() {
+                if (recognition) {
+                    recognition.stop();
+                    return;
+                }
+                recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = langSwitcher.dataset.lang;
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    identifierInput.value = transcript;
+                    clearInputBtn.style.opacity = '1';
+                    clearInputBtn.style.visibility = 'visible';
+                };
+
+                recognition.onerror = function(event) {
+                    console.error('Speech recognition error:', event.error);
+                };
+
+                recognition.onend = function() {
+                    isListening = false;
+                    voiceListeningBtn.classList.remove('listening');
+                    voiceInputBtn.style.display = 'grid';
+                };
+
+                recognition.start();
+                isListening = true;
+                voiceListeningBtn.classList.add('listening');
+                voiceInputBtn.style.display = 'none';
+            }
+
+            voiceInputBtn.addEventListener('click', startRecognition);
+            voiceListeningBtn.addEventListener('click', startRecognition);
+
+            // Initial theme and language setup
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const currentLang = langSwitcher.dataset.lang;
+            themeSwitcher.querySelector('i').classList.add(currentTheme === 'dark' ? 'ph-sun' : 'ph-moon');
+            langSwitcher.querySelector('i').classList.add(currentLang === 'ar' ? 'ph-globe' : 'ph-flag');
+
+            // Add event listeners for pop-in animations
+            document.querySelectorAll('.pref-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.classList.add('active');
+                    setTimeout(() => this.classList.remove('active'), 400); // Duration of pop-in animation
+                });
+            });
+
+            // Add event listeners for slide-down animations
+            document.querySelectorAll('.app-header h1').forEach(header => {
+                header.addEventListener('animationend', function() {
+                    this.style.animation = ''; // Reset animation
+                });
+            });
+
+            // Add event listeners for fade-in-up animations
+            document.querySelectorAll('.main-card').forEach(card => {
+                card.addEventListener('animationend', function() {
+                    this.style.animation = ''; // Reset animation
+                });
+            });
+        });
+    </script>
+</body>
+</html>
