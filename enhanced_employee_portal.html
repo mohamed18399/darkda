@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="page-title">بوابة الموظف الذكية - مدعومة بالذكاء الاصطناعي</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- AI Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <style>
+        /* CSS Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- ADVANCED DYNAMIC DESIGN SYSTEM WITH AI ENHANCEMENTS --- */
+        :root {
+            --font-family: 'Tajawal', sans-serif;
+            --shadow-sm: rgba(0, 0, 0, 0.05);
+            --shadow-md: rgba(0, 0, 0, 0.1);
+            --shadow-lg: rgba(0, 0, 0, 0.15);
+            --shadow-xl: rgba(0, 0, 0, 0.25);
+            --border-radius: 20px;
+            --border-radius-lg: 24px;
+            --transition-speed-fast: 0.25s;
+            --transition-speed-med: 0.5s;
+            --transition-speed-slow: 0.8s;
+            --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+            --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --glow-spread: 8px;
+            --neural-glow: 12px;
+        }
+
+        html[data-theme='light'] {
+            --bg-start: #e9eef8; --bg-end: #d8e3f5;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --blur-bg: rgba(255, 255, 255, 0.5);
+            --text-primary: #1e293b; --text-secondary: #475569;
+            --border-color: rgba(203, 213, 225, 0.6);
+            --input-bg: rgba(241, 245, 249, 0.8);
+            --primary-color: #3b82f6; --success-color: #10b981; --error-color: #ef4444;
+            --warning-color: #f59e0b; --info-color: #0ea5e9;
+            --glow-color: rgba(59, 130, 246, 0.12);
+            --ai-accent: #8b5cf6; --neural-color: rgba(139, 92, 246, 0.15);
+        }
+
+        html[data-theme='dark'] {
+            --bg-start: #1f2937; --bg-end: #111827;
+            --card-bg: rgba(31, 41, 55, 0.65);
+            --blur-bg: rgba(31, 41, 55, 0.45);
+            --text-primary: #f8fafc; --text-secondary: #9ca3af;
+            --border-color: rgba(75, 85, 99, 0.6);
+            --input-bg: rgba(55, 65, 81, 0.8);
+            --primary-color: #60a5fa; --success-color: #34d399; --error-color: #f87171;
+            --warning-color: #fbbf24; --info-color: #38bdf8;
+            --glow-color: rgba(96, 165, 250, 0.12);
+            --ai-accent: #a78bfa; --neural-color: rgba(167, 139, 250, 0.15);
+        }
+        
+        html[data-theme='synthwave'] {
+            --bg-start: #2d1f4a; --bg-end: #1a103c;
+            --card-bg: rgba(45, 31, 74, 0.7);
+            --blur-bg: rgba(45, 31, 74, 0.5);
+            --text-primary: #f2e7fe; --text-secondary: #c4b5fd;
+            --border-color: rgba(126, 34, 206, 0.5);
+            --input-bg: rgba(60, 42, 98, 0.8);
+            --primary-color: #f472b6; --success-color: #4ade80; --error-color: #fb7185;
+            --warning-color: #fcd34d; --info-color: #06b6d4;
+            --glow-color: rgba(244, 114, 182, 0.15);
+            --ai-accent: #e879f9; --neural-color: rgba(232, 121, 249, 0.2);
+        }
+
+        html[data-theme='desert'] {
+            --bg-start: #fdf6e3; --bg-end: #eee8d5;
+            --card-bg: rgba(250, 246, 233, 0.75);
+            --blur-bg: rgba(253, 246, 227, 0.6);
+            --text-primary: #586e75; --text-secondary: #839496;
+            --border-color: rgba(147, 161, 161, 0.5);
+            --input-bg: rgba(238, 232, 213, 0.8);
+            --primary-color: #268bd2; --success-color: #859900; --error-color: #dc322f;
+            --warning-color: #b58900; --info-color: #2aa198;
+            --glow-color: rgba(38, 139, 210, 0.12);
+            --ai-accent: #6f42c1; --neural-color: rgba(111, 66, 193, 0.12);
+        }
+        
+        /* --- PARTICLE BACKGROUND --- */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        /* --- DYNAMIC LAYOUT & ANIMATED BACKGROUND --- */
+        body {
+            font-family: var(--font-family);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px;
+            transition: color var(--transition-speed-med) ease;
+            background-size: 200% 200%;
+            background-image: linear-gradient(135deg, var(--bg-start), var(--bg-end), var(--bg-start));
+            animation: gradient-flow 15s ease infinite;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .app-container {
+            width: 100%; max-width: 520px; display: flex; flex-direction: column; gap: 24px;
+            position: relative; z-index: 1;
+        }
+
+        /* --- AI BADGE --- */
+        .ai-badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: linear-gradient(45deg, var(--ai-accent), color-mix(in srgb, var(--ai-accent) 70%, #fff));
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px color-mix(in srgb, var(--ai-accent) 40%, transparent);
+            animation: pulse-ai 3s infinite;
+        }
+        [dir="rtl"] .ai-badge { right: auto; left: -12px; }
+
+        @keyframes pulse-ai {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* --- HEADER & PREFERENCES --- */
+        .app-header {
+            text-align: center; animation: slide-down 0.7s var(--ease-out-quart);
+            position: relative;
+        }
+        .app-header h1 { 
+            font-size: 2.2rem; font-weight: 900; 
+            background: linear-gradient(45deg, var(--primary-color), var(--ai-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        #clock { 
+            font-size: 0.9rem; color: var(--text-secondary); margin-top: 4px; 
+            letter-spacing: 0.5px; font-weight: 500;
+        }
+
+        .preferences {
+            display: flex; gap: 16px; justify-content: center; margin-top: 20px;
+            animation: slide-down 0.7s 0.1s var(--ease-out-quart) backwards;
+        }
+        #theme-switcher, #lang-switcher {
+            display: flex; align-items: center; gap: 6px; padding: 6px;
+            background-color: var(--blur-bg); border: 1px solid var(--border-color);
+            border-radius: 50px; backdrop-filter: blur(12px);
+            box-shadow: 0 4px 15px var(--shadow-sm);
+            transition: all var(--transition-speed-fast) ease;
+        }
+
+        .pref-button {
+            background-color: transparent; border: none; width: 38px; height: 38px;
+            border-radius: 50%; cursor: pointer; color: var(--text-secondary);
+            font-size: 1.1rem; font-weight: 700; display: grid; place-items: center;
+            transition: all var(--transition-speed-fast) var(--ease-out-quart);
+        }
+        .pref-button:hover { color: var(--text-primary); transform: translateY(-2px); }
+        .pref-button.active {
+            background-color: var(--primary-color); color: white;
+            transform: scale(1.05);
+            box-shadow: 0 0 18px -2px color-mix(in srgb, var(--primary-color) 70%, transparent);
+            animation: pop-in 0.4s var(--ease-out-quart);
+        }
+        .pref-button i { font-size: 1.4rem; pointer-events: none; }
+
+        /* --- MAIN CARD WITH AI ENHANCEMENTS --- */
+        .main-card {
+            background-color: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg); box-shadow: 0 15px 40px var(--shadow-md);
+            padding: 32px; text-align: center;
+            transition: all var(--transition-speed-med) ease; backdrop-filter: blur(15px);
+            animation: fade-in-up 0.8s 0.2s var(--ease-out-quart) backwards;
+            position: relative;
+            overflow: hidden;
+        }
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--ai-accent), var(--success-color));
+            opacity: 0.7;
+        }
+        .main-card:focus-within {
+             box-shadow: 0 0 0 var(--glow-spread) var(--glow-color), 0 15px 40px var(--shadow-md);
+        }
+
+        /* --- AI CHAT ASSISTANT --- */
+        .ai-assistant {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--ai-accent), color-mix(in srgb, var(--ai-accent) 80%, #fff));
+            border-radius: 50%;
+            box-shadow: 0 8px 25px color-mix(in srgb, var(--ai-accent) 40%, transparent);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all var(--transition-speed-fast) var(--ease-out-back);
+            animation: float 3s ease-in-out infinite;
+        }
+        [dir="rtl"] .ai-assistant { right: auto; left: 24px; }
+        
+        .ai-assistant:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px color-mix(in srgb, var(--ai-accent) 50%, transparent);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .ai-chat-panel {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            width: 300px;
+            height: 400px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 50px var(--shadow-xl);
+            backdrop-filter: blur(15px);
+            display: none;
+            flex-direction: column;
+            z-index: 999;
+            overflow: hidden;
+        }
+        [dir="rtl"] .ai-chat-panel { right: auto; left: 24px; }
+
+        .ai-chat-header {
+            padding: 16px;
+            background: linear-gradient(45deg, var(--ai-accent), color-mix(in srgb, var(--ai-accent) 80%, #fff));
+            color: white;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-chat-messages {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ai-message, .user-message {
+            padding: 10px 14px;
+            border-radius: 12px;
+            max-width: 80%;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .ai-message {
+            background-color: var(--neural-color);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .user-message {
+            background-color: var(--primary-color);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .ai-chat-input {
+            padding: 16px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 8px;
+        }
+
+        .ai-chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            background-color: var(--input-bg);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+        }
+
+        .ai-chat-input button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background-color: var(--ai-accent);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- VOICE RECOGNITION BUTTON --- */
+        .voice-btn {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--error-color), color-mix(in srgb, var(--error-color) 80%, #fff));
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-speed-fast) ease;
+            box-shadow: 0 4px 15px color-mix(in srgb, var(--error-color) 30%, transparent);
+        }
+        [dir="rtl"] .voice-btn { left: auto; right: 50px; }
+
+        .voice-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .voice-btn.recording {
+            animation: pulse-record 1s infinite;
+        }
+
+        @keyframes pulse-record {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.2); }
+        }
+
+        /* --- INPUT AREA WITH AI ENHANCEMENTS --- */
+        .input-group { position: relative; }
+        #identifier-input {
+            font-size: 1.25rem; font-family: var(--font-family); width: 100%;
+            padding: 18px 60px 18px 18px; border: 1px solid transparent; border-radius: 12px;
+            text-align: center; direction: ltr;
+            transition: all var(--transition-speed-fast) ease; background-color: var(--input-bg);
+            color: var(--text-primary); box-shadow: inset 0 2px 5px var(--shadow-sm);
+        }
+        [dir="rtl"] #identifier-input { padding: 18px 18px 18px 60px; }
+        
+        #identifier-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: inset 0 2px 5px var(--shadow-sm), 0 0 0 4px color-mix(in srgb, var(--primary-color) 20%, transparent);
+            outline: none;
+        }
+
+        #clear-input-btn {
+            position: absolute; top: 50%; right: 56px; transform: translateY(-50%);
+            background: transparent; border: none; cursor: pointer; color: var(--text-secondary);
+            font-size: 1.5rem; opacity: 0; visibility: hidden;
+            transition: all var(--transition-speed-fast) ease;
+        }
+        [dir="rtl"] #clear-input-btn { right: auto; left: 56px; }
+        #identifier-input:not(:placeholder-shown) + .input-controls #clear-input-btn { opacity: 1; visibility: visible; }
+        #clear-input-btn:hover { color: var(--text-primary); transform: translateY(-50%) scale(1.1); }
+
+        .input-controls {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        [dir="rtl"] .input-controls { right: auto; left: 16px; }
+
+        /* --- SMART ANALYTICS DASHBOARD --- */
+        .analytics-panel {
+            background-color: var(--input-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .analytics-panel.visible {
+            display: block;
+            animation: fade-in-up 0.6s var(--ease-out-quart);
+        }
+
+        .analytics-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            font-weight: 700;
+            color: var(--ai-accent);
+        }
+
+        .chart-container {
+            height: 200px;
+            margin: 16px 0;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .insight-card {
+            background-color: var(--card-bg);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .insight-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--ai-accent);
+        }
+
+        .insight-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* --- PREDICTIVE ALERTS --- */
+        .prediction-alert {
+            background: linear-gradient(45deg, var(--warning-color), color-mix(in srgb, var(--warning-color) 80%, #fff));
+            color: white;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-top: 16px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            animation: slide-in 0.5s var(--ease-out-quart);
+        }
+
+        .prediction-alert.visible {
+            display: flex;
+        }
+
+        @keyframes slide-in {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* --- SMART NOTIFICATIONS --- */
+        .notification-center {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-width: 300px;
+        }
+        [dir="rtl"] .notification-center { right: auto; left: 24px; }
+
+        .smart-notification {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 25px var(--shadow-md);
+            backdrop-filter: blur(15px);
+            transform: translateX(100%);
+            animation: slide-in-notification 0.5s var(--ease-out-quart) forwards;
+        }
+        [dir="rtl"] .smart-notification { transform: translateX(-100%); }
+
+        @keyframes slide-in-notification {
+            to { transform: translateX(0); }
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .notification-body {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* --- ENHANCED DASHBOARD --- */
+        #dashboard {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows var(--transition-speed-slow) var(--ease-in-out-quad);
+        }
+        #dashboard.visible {
+            grid-template-rows: 1fr;
+        }
+        .dashboard-content {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding-top: 28px;
+        }
+        
+        /* Staggered Animations for Dashboard Children */
+        .profile-card, .stats-grid, #action-area, #todays-log, .analytics-panel {
+             opacity: 0;
+             animation: fade-in-up 0.6s var(--ease-out-quart) forwards;
+        }
+        #dashboard.visible .profile-card { animation-delay: 0.1s; }
+        #dashboard.visible .stats-grid { animation-delay: 0.2s; }
+        #dashboard.visible #action-area { animation-delay: 0.3s; }
+        #dashboard.visible #todays-log { animation-delay: 0.4s; }
+        #dashboard.visible .analytics-panel { animation-delay: 0.5s; }
+
+        .profile-card {
+            display: flex; flex-direction: column; align-items: center; gap: 12px;
+            background: linear-gradient(145deg, color-mix(in srgb, var(--input-bg) 50%, transparent), transparent);
+            border-radius: 12px; padding: 20px; text-align: center;
+            position: relative;
+        }
+        
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--ai-accent), var(--success-color));
+            border-radius: 14px;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        #profile-pic {
+            width: 80px; height: 80px; border-radius: 50%; border: 4px solid var(--primary-color);
+            object-fit: cover; background-color: var(--border-color);
+            box-shadow: 0 5px 20px var(--shadow-md); margin-bottom: 8px;
+            transition: transform var(--transition-speed-fast) ease;
+            position: relative;
+        }
+        
+        #profile-pic::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--ai-accent));
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+        }
+
+        .profile-card:hover #profile-pic { transform: scale(1.05); }
+
+        .profile-info h2 { font-size: 1.5rem; font-weight: 700; }
+        .profile-info p { font-size: 1rem; color: var(--text-secondary); margin-top: 2px; }
+        
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .stat-card {
+            background-color: var(--input-bg); border-radius: 12px;
+            padding: 16px; box-shadow: 0 4px 12px var(--shadow-sm);
+            transition: all var(--transition-speed-fast) ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--ai-accent));
+        }
+        
+        .stat-card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 8px 20px var(--shadow-md);
+        }
+        .stat-card h4 {
+            font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px;
+            font-weight: 500; display: flex; align-items: center; gap: 6px;
+        }
+        .stat-card p { 
+            font-size: 1.2rem; font-weight: 700; margin: 0; 
+            display: flex; align-items: baseline; gap: 4px; 
+        }
+        .stat-card p strong { 
+            color: var(--primary-color); font-size: 2rem; font-weight: 800; 
+        }
+        
+        #current-status { font-weight: 700; font-size: 1rem; }
+        @keyframes pulse-glow { 
+            0%, 100% { transform: scale(1); text-shadow: 0 0 5px transparent; } 
+            50% { transform: scale(1.03); text-shadow: 0 0 10px color-mix(in srgb, var(--success-color) 40%, transparent); } 
+        }
+        #current-status.status-in-animation { 
+            animation: pulse-glow 2.5s infinite var(--ease-in-out-quad); 
+        }
+        
+        /* --- ENHANCED ACTIONS --- */
+        #action-area { display: flex; flex-direction: column; gap: 12px; }
+        .button-group { display: grid; grid-template-columns: 1fr; }
+        button.action-btn {
+            font-family: var(--font-family); font-size: 1.1rem; font-weight: 700;
+            padding: 16px; border: none; border-radius: 12px; color: white; cursor: pointer;
+            transition: all 0.2s ease-in-out; text-transform: uppercase; letter-spacing: 1px;
+            display: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button.action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        button.action-btn:hover::before {
+            left: 100%;
+        }
+        
+        button.action-btn.visible { display: block; }
+        button.action-btn:hover:not(:disabled) {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px -5px var(--shadow-color);
+        }
+        .btn-check-in {
+            background: linear-gradient(45deg, var(--success-color), color-mix(in srgb, var(--success-color) 70%, #fff));
+            --shadow-color: color-mix(in srgb, var(--success-color) 40%, transparent);
+        }
+        .btn-check-out {
+            background: linear-gradient(45deg, var(--error-color), color-mix(in srgb, var(--error-color) 70%, #fff));
+            --shadow-color: color-mix(in srgb, var(--error-color) 40%, transparent);
+        }
+        
+        #late-reason-group.hidden { display: none; }
+        #late-reason {
+            width: 100%; padding: 14px; border-radius: 12px;
+            border: 1px solid var(--border-color); font-family: var(--font-family); font-size: 1rem;
+            background-color: var(--input-bg); color: var(--text-primary); appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: left 0.7rem center; background-repeat: no-repeat;
+            background-size: 1.5em; padding-left: 2.5rem;
+        }
+        [dir="rtl"] #late-reason {
+            background-position: right 0.7rem center; padding-left: 14px; padding-right: 2.5rem;
+        }
+
+        /* --- ENHANCED MESSAGES & LOG --- */
+        #message {
+            margin-top: 24px; padding: 14px 20px; border-radius: 10px; font-weight: 500;
+            opacity: 0; transform: translateY(10px);
+            transition: all var(--transition-speed-med) var(--ease-out-quart);
+            max-height: 0; overflow: hidden;
+            position: relative;
+        }
+        
+        #message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            border-radius: 2px;
+        }
+        
+        #message.visible { opacity: 1; transform: translateY(0); max-height: 100px; }
+        .msg-success { 
+            background-color: color-mix(in srgb, var(--success-color) 15%, transparent); 
+            color: var(--success-color); 
+        }
+        .msg-success::before { background-color: var(--success-color); }
+        .msg-error { 
+            background-color: color-mix(in srgb, var(--error-color) 15%, transparent); 
+            color: var(--error-color); 
+        }
+        .msg-error::before { background-color: var(--error-color); }
+        .msg-info { 
+            background-color: color-mix(in srgb, var(--primary-color) 15%, transparent); 
+            color: var(--primary-color); 
+        }
+        .msg-info::before { background-color: var(--primary-color); }
+        
+        #todays-log.hidden { display: none; }
+        #todays-log { margin-top: 8px; }
+        #todays-log h3 {
+            font-size: 1rem; font-weight: 700; margin-bottom: 16px; color: var(--text-secondary);
+            border-top: 1px solid var(--border-color); padding-top: 24px;
+        }
+        #todays-log-list { 
+            list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; 
+        }
+        #todays-log-list li {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: var(--input-bg); padding: 12px 16px; border-radius: 10px;
+            font-size: 1rem; box-shadow: 0 2px 5px var(--shadow-sm);
+            opacity: 0;
+            transition: all var(--transition-speed-fast) ease;
+            border-left: 4px solid var(--primary-color);
+        }
+        [dir="rtl"] #todays-log-list li { border-left: none; border-right: 4px solid var(--primary-color); }
+        
+        #todays-log-list li:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px var(--shadow-md);
+        }
+        [dir="rtl"] #todays-log-list li:hover { transform: translateX(-4px); }
+        
+        #todays-log.visible #todays-log-list li {
+            animation: fade-in-up 0.5s var(--ease-out-quart) forwards;
+        }
+        .log-type { 
+            display: flex; align-items: center; gap: 10px; font-weight: 500; 
+        }
+        .log-type .ph { font-size: 1.4rem; color: var(--primary-color); }
+        .log-time { font-weight: 700; letter-spacing: 0.5px; }
+
+        /* --- ANIMATIONS & UTILITIES --- */
+        .hidden { display: none !important; }
+        .ai-thinking {
+            animation: thinking-pulse 1.5s infinite;
+        }
+
+        @keyframes thinking-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes fade-in-up { 
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        @keyframes slide-down { 
+            from { opacity: 0; transform: translateY(-20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        @keyframes pop-in { 
+            from { transform: scale(0.8); opacity: 0; } 
+            to { transform: scale(1.05); opacity: 1; } 
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-container { max-width: 100%; padding: 0 12px; }
+            .main-card { padding: 24px; }
+            .ai-chat-panel { width: calc(100vw - 48px); right: 24px; }
+            [dir="rtl"] .ai-chat-panel { left: 24px; right: auto; }
+            .notification-center { right: 12px; max-width: calc(100vw - 24px); }
+            [dir="rtl"] .notification-center { left: 12px; right: auto; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Notification Center -->
+    <div class="notification-center" id="notification-center"></div>
+    
+    <!-- AI Chat Assistant -->
+    <div class="ai-assistant" id="ai-assistant" title="المساعد الذكي">
+        <i class="ph-bold ph-robot"></i>
+    </div>
+    
+    <!-- AI Chat Panel -->
+    <div class="ai-chat-panel" id="ai-chat-panel">
+        <div class="ai-chat-header">
+            <i class="ph-bold ph-robot"></i>
+            <span data-key="ai-assistant">المساعد الذكي</span>
+        </div>
+        <div class="ai-chat-messages" id="ai-chat-messages">
+            <div class="ai-message">
+                <span data-key="ai-welcome">مرحباً! أنا مساعدك الذكي. كيف يمكنني مساعدتك اليوم؟</span>
+            </div>
+        </div>
+        <div class="ai-chat-input">
+            <input type="text" id="ai-chat-input" data-key-placeholder="ai-input-placeholder" placeholder="اكتب رسالتك هنا...">
+            <button id="ai-send-btn" title="إرسال">
+                <i class="ph-bold ph-paper-plane-tilt"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div class="app-container">
+        
+        <header class="app-header">
+            <div class="ai-badge" data-key="ai-powered">مدعوم بالذكاء الاصطناعي</div>
+            <h1 data-key="main-title"></h1>
+            <p id="clock"></p>
+            <div class="preferences">
+                <div id="theme-switcher">
+                    <button class="pref-button" data-theme="light" title="Light Theme"><i class="ph-bold ph-sun"></i></button>
+                    <button class="pref-button" data-theme="dark" title="Dark Theme"><i class="ph-bold ph-moon"></i></button>
+                    <button class="pref-button" data-theme="desert" title="Desert Theme"><i class="ph-bold ph-cactus"></i></button>
+                    <button class="pref-button" data-theme="synthwave" title="Synthwave Theme"><i class="ph-bold ph-radio"></i></button>
+                </div>
+                <div id="lang-switcher">
+                    <button class="pref-button" data-lang="ar" title="العربية">ع</button>
+                    <button class="pref-button" data-lang="en" title="English">En</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-card">
+            <main>
+                <div class="input-group">
+                    <input type="text" id="identifier-input" data-key-placeholder="identifier-placeholder" autocomplete="off">
+                    <div class="input-controls">
+                        <button class="voice-btn" id="voice-btn" title="التعرف على الصوت">
+                            <i class="ph-bold ph-microphone"></i>
+                        </button>
+                        <button id="clear-input-btn" title="Clear"><i class="ph-bold ph-x-circle"></i></button>
+                    </div>
+                </div>
+
+                <!-- Prediction Alert -->
+                <div class="prediction-alert" id="prediction-alert">
+                    <i class="ph-bold ph-warning"></i>
+                    <span id="prediction-text"></span>
+                </div>
+
+                <div id="dashboard">
+                    <div class="dashboard-content">
+                        <section class="profile-card">
+                            <img id="profile-pic" src="" alt="Avatar">
+                            <div class="profile-info">
+                                <h2 id="welcome-message"></h2>
+                                <p id="job-title-display"></p>
+                            </div>
+                        </section>
+
+                        <section class="stats-grid">
+                            <div class="stat-card">
+                                <h4 data-key="status-today"><i class="ph-fill ph-user-circle-gear"></i></h4>
+                                <p id="current-status"></p>
+                            </div>
+                            <div class="stat-card">
+                                <h4 data-key="monthly-attendance"><i class="ph-fill ph-calendar-check"></i></h4>
+                                <p><strong id="monthly-attendance-stat">0</strong> <span data-key="day"></span></p>
+                            </div>
+                        </section>
+                        
+                        <!-- Smart Analytics Panel -->
+                        <section class="analytics-panel" id="analytics-panel">
+                            <div class="analytics-header">
+                                <i class="ph-bold ph-chart-line"></i>
+                                <span data-key="smart-analytics">التحليلات الذكية</span>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="attendance-chart"></canvas>
+                            </div>
+                            <div class="insights-grid">
+                                <div class="insight-card">
+                                    <div class="insight-value" id="punctuality-score">95%</div>
+                                    <div class="insight-label" data-key="punctuality">معدل الالتزام</div>
+                                </div>
+                                <div class="insight-card">
+                                    <div class="insight-value" id="avg-hours">8.2</div>
+                                    <div class="insight-label" data-key="avg-hours">متوسط الساعات</div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section id="action-area">
+                            <div id="late-reason-group" class="hidden">
+                                <select id="late-reason">
+                                    <option value="" data-key="no-reason"></option>
+                                    <option value="إذن تأخير" data-key="late-permission"></option>
+                                    <option value="مأمورية صباحية" data-key="morning-mission"></option>
+                                    <option value="ظرف طارئ" data-key="emergency"></option>
+                                </select>
+                            </div>
+                            <div class="button-group">
+                                <button id="check-in-btn" class="btn-check-in action-btn" data-key="check-in-btn"></button>
+                                <button id="check-out-btn" class="btn-check-out action-btn" data-key="check-out-btn"></button>
+                            </div>
+                        </section>
+                        
+                        <section id="todays-log" class="hidden">
+                            <h3 data-key="todays-log-title"></h3>
+                            <ul id="todays-log-list"></ul>
+                        </section>
+                    </div>
+                </div>
+
+                <div id="message"></div>
+
+            </main>
+        </div>
+
+    </div>
+
+    <script>
+    // --- ENHANCED JAVASCRIPT WITH AI FEATURES ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // Enhanced translations with AI features
+        const translations = {
+            en: {
+                'page-title': 'Smart Employee Portal - AI Powered',
+                'main-title': 'Smart Employee Portal',
+                'identifier-placeholder': 'Enter Employee Code or Phone',
+                'status-today': "Today's Status", 
+                'monthly-attendance': 'Monthly Attendance', 
+                'day': 'Day(s)',
+                'no-reason': '-- Select reason (optional) --', 
+                'late-permission': 'Late Permission',
+                'morning-mission': 'Morning Mission', 
+                'emergency': 'Emergency', 
+                'check-in-btn': 'Check In',
+                'check-out-btn': 'Check Out', 
+                'todays-log-title': "Today's Log",
+                'welcome': 'Welcome,', 
+                'status-in': '✅ You are IN', 
+                'status-out': '❌ You are OUT',
+                'log-in': 'Check-In', 
+                'log-out': 'Check-Out', 
+                'not-found-name': 'Unknown Employee',
+                'not-found-status': 'Please check the Code or Phone Number.', 
+                'server-error': 'Cannot connect to the server.',
+                'processing': 'Processing...',
+                'check-in-icon': 'ph-bold ph-sign-in', 
+                'check-out-icon': 'ph-bold ph-sign-out',
+                'ai-powered': 'AI Powered',
+                'ai-assistant': 'AI Assistant',
+                'ai-welcome': 'Hello! I\'m your AI assistant. How can I help you today?',
+                'ai-input-placeholder': 'Type your message here...',
+                'smart-analytics': 'Smart Analytics',
+                'punctuality': 'Punctuality Rate',
+                'avg-hours': 'Avg. Hours',
+                'voice-listening': 'Listening...',
+                'voice-not-supported': 'Voice recognition not supported',
+                'prediction-late': 'AI Prediction: High probability of being late tomorrow',
+                'prediction-early': 'AI Suggestion: Leave 15 minutes earlier for optimal commute'
+            },
+            ar: {
+                'page-title': 'بوابة الموظف الذكية - مدعومة بالذكاء الاصطناعي',
+                'main-title': 'بوابة الموظف الذكية',
+                'identifier-placeholder': 'الكود الوظيفي أو رقم الهاتف',
+                'status-today': 'حالة اليوم', 
+                'monthly-attendance': 'حضور الشهر', 
+                'day': 'يوم',
+                'no-reason': '-- تحديد سبب التأخير (اختياري) --', 
+                'late-permission': 'إذن تأخير',
+                'morning-mission': 'مأمورية صباحية', 
+                'emergency': 'ظرف طارئ', 
+                'check-in-btn': 'تسجيل حضور',
+                'check-out-btn': 'تسجيل انصراف', 
+                'todays-log-title': 'سجل اليوم',
+                'welcome': 'مرحباً،', 
+                'status-in': '✅ أنت بالداخل', 
+                'status-out': '❌ أنت بالخارج',
+                'log-in': 'حضور', 
+                'log-out': 'انصراف', 
+                'not-found-name': 'موظف غير معروف',
+                'not-found-status': 'يرجى التأكد من الكود أو رقم الهاتف.', 
+                'server-error': 'لا يمكن الاتصال بالخادم.',
+                'processing': 'جاري المعالجة...',
+                'check-in-icon': 'ph-bold ph-sign-in', 
+                'check-out-icon': 'ph-bold ph-sign-out',
+                'ai-powered': 'مدعوم بالذكاء الاصطناعي',
+                'ai-assistant': 'المساعد الذكي',
+                'ai-welcome': 'مرحباً! أنا مساعدك الذكي. كيف يمكنني مساعدتك اليوم؟',
+                'ai-input-placeholder': 'اكتب رسالتك هنا...',
+                'smart-analytics': 'التحليلات الذكية',
+                'punctuality': 'معدل الالتزام',
+                'avg-hours': 'متوسط الساعات',
+                'voice-listening': 'جاري الاستماع...',
+                'voice-not-supported': 'التعرف على الصوت غير مدعوم',
+                'prediction-late': 'توقع الذكاء الاصطناعي: احتمالية عالية للتأخير غداً',
+                'prediction-early': 'اقتراح الذكاء الاصطناعي: اخرج مبكراً 15 دقيقة للوصول في الوقت المناسب'
+            }
+        };
+
+        // DOM Elements
+        const identifierInput = document.getElementById('identifier-input');
+        const dashboard = document.getElementById('dashboard');
+        const checkInButton = document.getElementById('check-in-btn');
+        const checkOutButton = document.getElementById('check-out-btn');
+        const welcomeMessage = document.getElementById('welcome-message');
+        const jobTitleDisplay = document.getElementById('job-title-display');
+        const profilePic = document.getElementById('profile-pic');
+        const currentStatus = document.getElementById('current-status');
+        const monthlyAttendanceStat = document.getElementById('monthly-attendance-stat');
+        const lateReasonGroup = document.getElementById('late-reason-group');
+        const lateReasonSelect = document.getElementById('late-reason');
+        const todaysLog = document.getElementById('todays-log');
+        const todaysLogList = document.getElementById('todays-log-list');
+        const messageDiv = document.getElementById('message');
+        const clockDiv = document.getElementById('clock');
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const langSwitcher = document.getElementById('lang-switcher');
+        const clearInputBtn = document.getElementById('clear-input-btn');
+        
+        // AI Elements
+        const aiAssistant = document.getElementById('ai-assistant');
+        const aiChatPanel = document.getElementById('ai-chat-panel');
+        const aiChatMessages = document.getElementById('ai-chat-messages');
+        const aiChatInput = document.getElementById('ai-chat-input');
+        const aiSendBtn = document.getElementById('ai-send-btn');
+        const voiceBtn = document.getElementById('voice-btn');
+        const analyticsPanel = document.getElementById('analytics-panel');
+        const predictionAlert = document.getElementById('prediction-alert');
+        const predictionText = document.getElementById('prediction-text');
+        const notificationCenter = document.getElementById('notification-center');
+        
+        let messageTimer;
+        let currentLang = localStorage.getItem('language') || 'ar';
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        let attendanceChart;
+        let aiChatOpen = false;
+        let recognition;
+        let isListening = false;
+        
+        const DEVICE_TOKEN_KEY = 'attendance_device_token';
+
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 50, density: { enable: true, value_area: 800 } },
+                color: { value: '#8b5cf6' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.3, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#8b5cf6', opacity: 0.2, width: 1 },
+                move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out' }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // AI Animation Helper
+        function animateCountUp(el, to) {
+            let from = 0;
+            const duration = 1000;
+            const frameRate = 1000 / 60;
+            const totalFrames = Math.round(duration / frameRate);
+            let frame = 0;
+            const counter = setInterval(() => {
+                frame++;
+                const progress = frame / totalFrames;
+                const current = Math.round(to * progress);
+                el.textContent = current;
+                if (frame === totalFrames) {
+                    clearInterval(counter);
+                    el.textContent = to;
+                }
+            }, frameRate);
+        }
+
+        // Language and Theme Functions
+        const setLanguage = (lang) => {
+            currentLang = lang; 
+            localStorage.setItem('language', lang);
+            document.documentElement.lang = lang; 
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key]) { 
+                    el.textContent = translations[lang][key]; 
+                }
+            });
+            
+            document.querySelectorAll('[data-key-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-key-placeholder');
+                if (translations[lang][key]) { 
+                    el.placeholder = translations[lang][key]; 
+                }
+            });
+            
+            langSwitcher.querySelector('.active')?.classList.remove('active');
+            langSwitcher.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+            
+            if (identifierInput.value.trim().length >= 4) fetchEmployeeStatus();
+        };
+
+        const setTheme = (theme) => {
+            currentTheme = theme; 
+            localStorage.setItem('theme', theme);
+            document.documentElement.setAttribute('data-theme', theme);
+            themeSwitcher.querySelector('.active')?.classList.remove('active');
+            themeSwitcher.querySelector(`[data-theme="${theme}"]`).classList.add('active');
+        };
+
+        // AI Chat Functions
+        function toggleAiChat() {
+            aiChatOpen = !aiChatOpen;
+            aiChatPanel.style.display = aiChatOpen ? 'flex' : 'none';
+            if (aiChatOpen) {
+                aiChatInput.focus();
+            }
+        }
+
+        function addAiMessage(message, isUser = false) {
+            const messageEl = document.createElement('div');
+            messageEl.className = isUser ? 'user-message' : 'ai-message';
+            messageEl.textContent = message;
+            aiChatMessages.appendChild(messageEl);
+            aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+        }
+
+        function processAiMessage(userMessage) {
+            // Simulate AI thinking
+            const thinkingEl = document.createElement('div');
+            thinkingEl.className = 'ai-message ai-thinking';
+            thinkingEl.textContent = '...';
+            aiChatMessages.appendChild(thinkingEl);
+            aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+
+            setTimeout(() => {
+                thinkingEl.remove();
+                
+                // Simple AI responses based on keywords
+                let response = '';
+                const lowerMessage = userMessage.toLowerCase();
+                
+                if (lowerMessage.includes('حضور') || lowerMessage.includes('attendance')) {
+                    response = currentLang === 'ar' 
+                        ? 'يمكنك تسجيل الحضور عن طريق إدخال الكود الوظيفي أو رقم الهاتف في الحقل أعلاه.'
+                        : 'You can check in by entering your employee code or phone number in the field above.';
+                } else if (lowerMessage.includes('تأخير') || lowerMessage.includes('late')) {
+                    response = currentLang === 'ar' 
+                        ? 'إذا كنت متأخراً، يمكنك اختيار سبب التأخير من القائمة المنسدلة عند تسجيل الحضور.'
+                        : 'If you\'re late, you can select a reason from the dropdown when checking in.';
+                } else if (lowerMessage.includes('إحصائيات') || lowerMessage.includes('stats')) {
+                    response = currentLang === 'ar' 
+                        ? 'يمكنك مشاهدة إحصائياتك الشهرية والتحليلات الذكية في لوحة المعلومات.'
+                        : 'You can view your monthly statistics and smart analytics in the dashboard.';
+                } else {
+                    response = currentLang === 'ar' 
+                        ? 'شكراً لك على سؤالك! أنا هنا لمساعدتك في استخدام نظام الحضور والانصراف.'
+                        : 'Thank you for your question! I\'m here to help you with the attendance system.';
+                }
+                
+                addAiMessage(response);
+            }, 1500);
+        }
+
+        // Voice Recognition
+        function initVoiceRecognition() {
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new SpeechRecognition();
+                recognition.lang = currentLang === 'ar' ? 'ar-SA' : 'en-US';
+                recognition.continuous = false;
+                recognition.interimResults = false;
+
+                recognition.onstart = () => {
+                    isListening = true;
+                    voiceBtn.classList.add('recording');
+                    voiceBtn.querySelector('i').className = 'ph-bold ph-stop';
+                    showMessage(translations[currentLang]['voice-listening'], 'info');
+                };
+
+                recognition.onresult = (event) => {
+                    const result = event.results[0][0].transcript;
+                    identifierInput.value = result;
+                    fetchEmployeeStatus();
+                };
+
+                recognition.onend = () => {
+                    isListening = false;
+                    voiceBtn.classList.remove('recording');
+                    voiceBtn.querySelector('i').className = 'ph-bold ph-microphone';
+                    clearMessage();
+                };
+
+                recognition.onerror = () => {
+                    isListening = false;
+                    voiceBtn.classList.remove('recording');
+                    voiceBtn.querySelector('i').className = 'ph-bold ph-microphone';
+                    showMessage(translations[currentLang]['voice-not-supported'], 'error');
+                };
+            } else {
+                voiceBtn.style.display = 'none';
+            }
+        }
+
+        // Smart Analytics
+        function initAttendanceChart() {
+            const ctx = document.getElementById('attendance-chart').getContext('2d');
+            
+            // Mock data for demonstration
+            const data = {
+                labels: ['ا', 'ث', 'أ', 'خ', 'ج', 'س', 'ح'],
+                datasets: [{
+                    label: 'ساعات العمل',
+                    data: [8, 7.5, 8.5, 8, 7, 0, 0],
+                    borderColor: 'rgb(139, 92, 246)',
+                    backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            };
+
+            attendanceChart = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 10,
+                            grid: { color: 'rgba(139, 92, 246, 0.1)' }
+                        },
+                        x: {
+                            grid: { color: 'rgba(139, 92, 246, 0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Smart Notifications
+        function showSmartNotification(title, message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = 'smart-notification';
+            
+            const iconMap = {
+                info: 'ph-bold ph-info',
+                success: 'ph-bold ph-check-circle',
+                warning: 'ph-bold ph-warning',
+                error: 'ph-bold ph-x-circle'
+            };
+            
+            notification.innerHTML = `
+                <div class="notification-header">
+                    <i class="${iconMap[type]}"></i>
+                    ${title}
+                </div>
+                <div class="notification-body">${message}</div>
+            `;
+            
+            notificationCenter.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slide-in-notification 0.5s var(--ease-out-quart) reverse forwards';
+                setTimeout(() => notification.remove(), 500);
+            }, 5000);
+        }
+
+        // Predictive Analytics
+        function showPredictiveAlert() {
+            // Mock AI prediction logic
+            const now = new Date();
+            const hour = now.getHours();
+            
+            if (hour >= 7 && hour <= 9) {
+                predictionText.textContent = translations[currentLang]['prediction-early'];
+                predictionAlert.classList.add('visible');
+                
+                setTimeout(() => {
+                    predictionAlert.classList.remove('visible');
+                }, 10000);
+            }
+        }
+
+        // Event Listeners
+        themeSwitcher.addEventListener('click', (e) => {
+            const button = e.target.closest('.pref-button');
+            if (button && button.dataset.theme) setTheme(button.dataset.theme);
+        });
+        
+        langSwitcher.addEventListener('click', (e) => {
+            const button = e.target.closest('.pref-button');
+            if (button && button.dataset.lang) setLanguage(button.dataset.lang);
+        });
+        
+        clearInputBtn.addEventListener('click', () => {
+            identifierInput.value = '';
+            identifierInput.focus();
+            updateDashboard(null, 'initial');
+        });
+
+        aiAssistant.addEventListener('click', toggleAiChat);
+        
+        aiSendBtn.addEventListener('click', () => {
+            const message = aiChatInput.value.trim();
+            if (message) {
+                addAiMessage(message, true);
+                processAiMessage(message);
+                aiChatInput.value = '';
+            }
+        });
+        
+        aiChatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                aiSendBtn.click();
+            }
+        });
+
+        voiceBtn.addEventListener('click', () => {
+            if (recognition) {
+                if (isListening) {
+                    recognition.stop();
+                } else {
+                    recognition.start();
+                }
+            }
+        });
+        
+        // Initialize
+        setTheme(currentTheme); 
+        setLanguage(currentLang);
+        initVoiceRecognition();
+        
+        identifierInput.addEventListener('input', debounce(fetchEmployeeStatus, 500));
+        checkInButton.addEventListener('click', () => recordAttendance('Check-In'));
+        checkOutButton.addEventListener('click', () => recordAttendance('Check-Out'));
+
+        updateClock(); 
+        getOrGenerateDeviceToken(); 
+        setInterval(updateClock, 1000);
+        
+        // Show predictive alert on load
+        setTimeout(showPredictiveAlert, 3000);
+
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' 
+            });
+            const dateString = now.toLocaleDateString(
+                currentLang === 'ar' ? 'ar-EG' : 'en-US', 
+                { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+            );
+            clockDiv.innerHTML = `${dateString} | ${timeString}`;
+        }
+        
+        async function fetchEmployeeStatus() {
+            clearMessage();
+            const identifier = identifierInput.value.trim();
+            if (identifier.length < 4) { 
+                updateDashboard(null, 'initial'); 
+                return; 
+            }
+            
+            try {
+                const response = await fetch(`/api/employee-status?identifier=${identifier}`);
+                if (!response.ok) {
+                    if (response.status === 404) { 
+                        updateDashboard(null, 'not_found'); 
+                    } else { 
+                        throw new Error('Server returned an error'); 
+                    }
+                } else {
+                    const result = await response.json();
+                    updateDashboard(result, result.status || 'found');
+                    
+                    // Show smart notification for successful fetch
+                    showSmartNotification(
+                        translations[currentLang]['ai-assistant'],
+                        `تم العثور على بيانات ${result.employee_name}`,
+                        'success'
+                    );
+                }
+            } catch (error) {
+                console.error("Error fetching status:", error);
+                updateDashboard(null, 'error');
+            }
+        }
+    
+        async function recordAttendance(type) {
+            showMessage(translations[currentLang]['processing'], 'info');
+            const identifier = identifierInput.value.trim(); 
+            let success = false;
+            
+            try {
+                const notes = lateReasonSelect.value;
+                const deviceToken = getOrGenerateDeviceToken();
+                const location = await getLocation();
+                const fingerprint = await getCanvasFingerprint();
+                const payload = { 
+                    identifier, fingerprint, location, type, notes, token: deviceToken 
+                };
+                
+                const response = await fetch('/api/check-in', { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify(payload) 
+                });
+                const result = await response.json();
+                showMessage(result.message, response.ok ? 'success' : 'error');
+                
+                if (response.ok) { 
+                    success = true; 
+                    
+                    // Show smart notification
+                    showSmartNotification(
+                        translations[currentLang]['ai-assistant'],
+                        `تم تسجيل ${type === 'Check-In' ? 'الحضور' : 'الانصراف'} بنجاح`,
+                        'success'
+                    );
+                }
+            } catch (error) {
+                showMessage(error.message || 'حدث خطأ فني.', 'error');
+            } finally {
+                if (success) { 
+                    await fetchEmployeeStatus(); 
+                }
+            }
+        }
+
+        function updateDashboard(data, state) {
+            dashboard.classList.remove('visible');
+            todaysLog.classList.add('hidden');
+            analyticsPanel.classList.remove('visible');
+            checkInButton.classList.remove('visible');
+            checkOutButton.classList.remove('visible');
+            lateReasonGroup.classList.add('hidden');
+            currentStatus.classList.remove('status-in-animation');
+
+            setTimeout(() => {
+                switch (state) {
+                    case 'found':
+                        welcomeMessage.textContent = `${translations[currentLang]['welcome']} ${data.employee_name}`;
+                        jobTitleDisplay.textContent = data.job_title || '';
+                        profilePic.src = data.profile_pic_url || 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2E5YWJiNSI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgM2MxLjY2IDAgMyAxLjM0IDMgMy4xMi0uMDQgMS43Ny0xLjQgMy4xLTMgMy4xcy0zLTEuMzQtMy0zYzAtMS42NiAxLjM0LTMgMy0zem0wIDE0LjJjLTIuNSAwLTQuNzEtMS4yOC02LTYuNzIgMS40Ny0yLjIgMy41OC0zLjUgNi0zLjUgMi40MiAwIDQuNTMgMS4yOSA2IDMuNTEtMS4yOSA1LjQzLTMuNSAzLjIxLTYgMy4yMXoiLz48L3N2Zz4=';
+                        
+                        animateCountUp(monthlyAttendanceStat, data.stats.monthly_attendance);
+
+                        const lastCheckIn = data.todays_log.filter(log => log.type === 'Check-In').pop();
+                        const lastCheckOut = data.todays_log.filter(log => log.type === 'Check-Out').pop();
+                        const checkInTime = lastCheckIn ? new Date(`1970-01-01T${lastCheckIn.check_time}`) : null;
+                        const checkOutTime = lastCheckOut ? new Date(`1970-01-01T${lastCheckOut.check_time}`) : null;
+
+                        if (checkInTime && (!checkOutTime || checkOutTime < checkInTime)) {
+                            currentStatus.innerHTML = translations[currentLang]['status-in'];
+                            currentStatus.classList.add('status-in-animation');
+                        } else {
+                            currentStatus.innerHTML = translations[currentLang]['status-out'];
+                        }
+
+                        if (data.next_action === 'Check-In') {
+                            checkInButton.classList.add('visible');
+                            if (data.is_late) { 
+                                lateReasonGroup.classList.remove('hidden'); 
+                            }
+                        } else if (data.next_action === 'Check-Out') {
+                            checkOutButton.classList.add('visible');
+                        }
+
+                        if (data.todays_log && data.todays_log.length > 0) {
+                            todaysLog.classList.remove('hidden');
+                            todaysLogList.innerHTML = '';
+                            data.todays_log.sort((a, b) => (b.id || 0) - (a.id || 0)).forEach((log, index) => {
+                                const li = document.createElement('li');
+                                const typeText = translations[currentLang][log.type === 'Check-In' ? 'log-in' : 'log-out'];
+                                const iconClass = translations[currentLang][log.type === 'Check-In' ? 'check-in-icon' : 'check-out-icon'];
+                                li.innerHTML = `<div class="log-type"><i class="ph ${iconClass}"></i> ${typeText}</div><div class="log-time">${log.check_time}</div>`;
+                                li.style.animationDelay = `${index * 0.08}s`;
+                                todaysLogList.appendChild(li);
+                            });
+                        }
+                        
+                        // Show analytics panel
+                        analyticsPanel.classList.add('visible');
+                        setTimeout(() => {
+                            if (!attendanceChart) {
+                                initAttendanceChart();
+                            }
+                        }, 500);
+                        
+                        dashboard.classList.add('visible');
+                        if (data.todays_log && data.todays_log.length > 0) {
+                           todaysLog.classList.add('visible');
+                        }
+                        break;
+                        
+                    case 'not_found':
+                        welcomeMessage.textContent = translations[currentLang]['not-found-name'];
+                        jobTitleDisplay.textContent = '';
+                        currentStatus.textContent = translations[currentLang]['not-found-status'];
+                        monthlyAttendanceStat.textContent = '0';
+                        profilePic.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2E5YWJiNSI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgM2MxLjY2IDAgMyAxLjM0IDMgMy4xMi0uMDQgMS43Ny0xLjQgMy4xLTMgMy4xcy0zLTEuMzQtMy0zYzAtMS42NiAxLjM0LTMgMy0zem0wIDE0LjJjLTIuNSAwLTQuNzEtMS4yOC02LTYuNzIgMS40Ny0yLjIgMy41OC0zLjUgNi0zLjUgMi40MiAwIDQuNTMgMS4yOSA2IDMuNTEtMS4yOSA1LjQzLTMuNSAzLjIxLTYgMy4yMXoiLz48L3N2Zz4=';
+                        dashboard.classList.add('visible');
+                        break;
+                        
+                    case 'error':
+                        showMessage(translations[currentLang]['server-error'], 'error');
+                        break;
+                        
+                    case 'initial':
+                    default:
+                        break;
+                }
+            }, 50);
+        }
+
+        function showMessage(msg, type) {
+            clearTimeout(messageTimer);
+            messageDiv.className = ''; 
+            messageDiv.classList.add(`msg-${type}`, 'visible');
+            messageDiv.textContent = msg;
+            messageTimer = setTimeout(clearMessage, 5000);
+        }
+        
+        function clearMessage() { 
+            messageDiv.classList.remove('visible'); 
+        }
+        
+        function getLocation() { 
+            return new Promise((resolve, reject) => { 
+                if (!navigator.geolocation) return reject(new Error("Geolocation not supported.")); 
+                navigator.geolocation.getCurrentPosition(
+                    pos => resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude }), 
+                    () => reject(new Error("Failed to get location.")), 
+                    { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
+                ); 
+            }); 
+        }
+        
+        function getCanvasFingerprint() { 
+            return new Promise((resolve) => { 
+                const canvas = document.createElement('canvas'); 
+                const ctx = canvas.getContext('2d'); 
+                const txt = 'abcdefghijklmnopqrstuvwxyz0123456789'; 
+                ctx.textBaseline = "top"; 
+                ctx.font = "14px 'Arial'"; 
+                ctx.textBaseline = "alphabetic"; 
+                ctx.fillStyle = "#f60"; 
+                ctx.fillRect(125, 1, 62, 20); 
+                ctx.fillStyle = "#069"; 
+                ctx.fillText(txt, 2, 15); 
+                ctx.fillStyle = "rgba(102, 204, 0, 0.7)"; 
+                ctx.fillText(txt, 4, 17); 
+                const dataUrl = canvas.toDataURL(); 
+                let hash = 0; 
+                for (let i = 0; i < dataUrl.length; i++) { 
+                    const char = dataUrl.charCodeAt(i); 
+                    hash = ((hash << 5) - hash) + char; 
+                    hash = hash & hash; 
+                } 
+                resolve(hash.toString()); 
+            }); 
+        }
+        
+        function generateUUID() { 
+            return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => 
+                (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+            ); 
+        }
+        
+        function getOrGenerateDeviceToken() { 
+            let token = localStorage.getItem(DEVICE_TOKEN_KEY); 
+            if (!token) { 
+                token = generateUUID(); 
+                localStorage.setItem(DEVICE_TOKEN_KEY, token); 
+            } 
+            return token; 
+        }
+        
+        function debounce(func, delay) { 
+            let timeout; 
+            return function(...args) { 
+                clearTimeout(timeout); 
+                timeout = setTimeout(() => func.apply(this, args), delay); 
+            }; 
+        }
+    });
+    </script>
+</body>
+</html>
